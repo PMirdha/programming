@@ -5,19 +5,29 @@ class Heap(object):
     
     def HeapSort(self, A, ASC=True):
         if ASC:
-            self.BuildMaxHeap(A)
+            self.BuildMaxHeapMethod1(A)
             self.MaxHeapSort(A)
         else:
-            self.BuildMinHeap(A)
+            self.BuildMinHeapMethod1(A)
             self.MinHeapSort(A)
         return A
     
-    def BuildMaxHeap(self, A):
+    def BuildMaxHeapMethod1(self, A):
+        for index in xrange(len(A)>>1, -1, -1):
+            A = self.MaxPercolateDown(A, index, len(A))
+        return A
+    
+    def BuildMinHeapMethod1(self, A):
+        for index in xrange(len(A)>>1, -1, -1):
+            A = self.MinPercolateDown(A, index, len(A))
+        return A
+
+    def BuildMaxHeapMethod2(self, A):
         for index in xrange(1, len(A)):
             A = self.MaxHeapifyUp(A, index)
         return A
     
-    def BuildMinHeap(self, A):
+    def BuildMinHeapMethod2(self, A):
         for index in xrange(1, len(A)):
             A = self.MinHeapifyUp(A, index)
         return A
@@ -105,6 +115,6 @@ if __name__ == '__main__':
     ri = raw_input("Enter list items to be sorted\n").strip()
     A = ri.split(" ")
     A = list(map(int, A))
-    A = obj.HeapSort(A,ASC=False)
+    A = obj.HeapSort(A)
 
     print(A)
