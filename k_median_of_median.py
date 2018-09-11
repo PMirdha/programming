@@ -7,7 +7,13 @@ def median_of_medians(A, x, s, e):
 
 def partition(A, index, s, e):
     swap(A, index, e)
-    
+    x = A[e]
+    p = s-1
+    for i in range(s, e+1):
+        if A[i] <= x:
+            swap(A, i, p+1)
+            p += 1
+    return p
 
 def selection_linear(A, k, s, e):
     median_index = median_of_medians(A, 5, s, e)
