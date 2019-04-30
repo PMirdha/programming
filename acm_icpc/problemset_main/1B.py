@@ -1,4 +1,5 @@
-
+import string
+ALPHABET = string.uppsercase
 
 def get_pattern(pattern):
     if pattern[0] == 'R' and pattern[1].isdigit():
@@ -14,6 +15,7 @@ def to_xl_type(pattern):
     c = pattern.find('C') + 1
     col_num = int(pattern[c:])
     
+    
 
 def convert_to(pattern, type):
     if type:
@@ -23,8 +25,9 @@ def convert_to(pattern, type):
     return converted_pattern
 
 def solve(pattern):
-
-    print(converted_pattern)
+    type = get_pattern(pattern)
+    print(convert_to(pattern, type))
+    # print(converted_pattern)
 
 def take_input():
     instr = raw_input()
@@ -34,3 +37,6 @@ def get_input():
     n = int(take_input()[0])
     for i in range(n):
         solve(take_input()[0])
+
+if __name__ == "__main__":
+    get_input()
