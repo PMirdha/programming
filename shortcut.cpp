@@ -34,6 +34,7 @@ void variables(){
 	ans = min(ans, new_computation);
 }
 
+// Fast Integer Scan
 void fis(int &number) 
 { 
     bool negative = false; 
@@ -53,14 +54,16 @@ void fis(int &number)
         number *= -1; 
 }
 
-int fis_mat(int &r, int &c, char type){
+typedef vector<vector<int> > imat;
+imat fis_mat(int &r, int &c){
 	r=c=0;
-	fast_int_scan(r);
-	fast_int_scan(c);
-	int mat[r][c];
+	fis(r);
+	fis(c);
+	imat mat(r);
 	for(int i=0;i<r;i++){
+		mat[i] = va(c);
 		for(int j=0;j<c;j++)
-			fast_int_scan(mat[i][j]);
+			fis(mat[i][j]);
 	}
-	return mat
+	return mat;
 }
